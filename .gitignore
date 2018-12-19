@@ -21,3 +21,4 @@
 
 # environment
 /.env
+*.swp
