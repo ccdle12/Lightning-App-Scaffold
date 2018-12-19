@@ -1,0 +1,38 @@
+version: '2'
+services:
+  api:
+    container_name: app
+    build: ../app
+    command: "/app/scripts/dev.sh"
+    volumes:
+      - ../app:/app
+      - ../simnet:/simnet
+    ports:
+      - 3000:3000
+    environment:
+      - LND_NODE_IP=$NODES_SIMNET_IP
+      - LND_NODE_PORT=10009
+      - MACAROON_PATH=$SIMNET_MACAROON_PATH
+      - TLS_PATH=$SIMNET_TLS_PATH
+    networks:
+      default:
+        ipv4_address: $APP_SIMNET_IP
+
+  simnet:
+    container_name: simnet
+    build: ../simnet
+    command: "/simnet/scripts/main.sh"
+    volumes:
+      - ../simnet:/simnet  
+    ports:
+      - 10009:10009
+    networks:
+      default:
+        ipv4_address: $NODES_SIMNET_IP 
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 174.20.0.0/24

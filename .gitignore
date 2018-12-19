@@ -1,0 +1,23 @@
+# gRPC
+/app/src/grpc/*.macaroon
+/grpc/*.macaroon
+/app/src/grpc/tls.cert
+
+# node_modules
+/app/node_modules
+
+# simnet
+/simnet/alice/*.cert
+/simnet/alice/*.key
+/simnet/alice/data
+
+/simnet/bob/*.cert
+/simnet/bob/*.key
+/simnet/bob/data
+
+/simnet/carol/*.cert
+/simnet/carol/*.key
+/simnet/carol/data
+
+# environment
+/.env
