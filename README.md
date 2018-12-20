@@ -27,11 +27,11 @@ $ make attach-simnet
 
 Setup Alice
 ```
-$ cd ./alice && ./alice.sh start
+$ cd ./alice && ./start.sh
 ```
 
 Create or Unlock Alice
 ```
-$ cd ./alice && ./alice.sh cli create
+$ cd ./alice && ./alice.sh create
 ```
 
