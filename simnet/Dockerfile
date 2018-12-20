@@ -15,8 +15,15 @@ WORKDIR ./lnd
 
 # Install LND.
 RUN make \ 
-    && make install \
-    && make btcd
+    && make install
+
+# Download and Install BTCD.
+WORKDIR /root/go/src/github.com
+RUN git clone https://github.com/btcsuite/btcd.git
+
+# Install btcd.
+WORKDIR /root/go/src/github.com/btcd
+RUN go install . ./cmd/...
 
 # Set the entry workdir to simnet.
 WORKDIR /simnet
