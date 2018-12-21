@@ -35,3 +35,19 @@ Create or Unlock Alice
 $ cd ./alice && ./alice.sh create
 ```
 
+Create an address for Alice
+```
+$ ./alice.sh newaddress np2wkh
+response: rY6h4U955SoNDbqP3CVvmav78Pgspmtkdw
+```
+
+Add alices address as the mining address
+```
+$ cd ./scripts && ./btcd.sh stop
+$ cd ./scripts && ./btcd.sh --miningaddr=rY6h4U955SoNDbqP3CVvmav78Pgspmtkdw
+```
+
+Mine x number of blocks
+```
+$ cd ./scripts && ./btc.sh generate 100
+```
