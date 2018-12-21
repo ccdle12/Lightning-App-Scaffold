@@ -20,7 +20,9 @@ $ make dev
 
 ### Setting up the simnet
 
-At the momnet setting up the nodes should be done in multiple windows.
+At the moment setting up the nodes should be done in multiple windows.
+Before each of the below commands, make sure to attach to simnet in
+different windows.
 ```
 $ make attach-simnet
 ```
