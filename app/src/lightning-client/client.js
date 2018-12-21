@@ -33,6 +33,7 @@ lnrpcDescriptor = grpc.load("/app/src/grpc/rpc.proto");
 lnrpc = lnrpcDescriptor.lnrpc;
 client = new lnrpc.Lightning(process.env.LND_NODE_IP + ":" + process.env.LND_NODE_PORT, credentials);
 
+
 /**
  * generateInvoice will allow the end user to make a RPC to generate an invoice.
  */
@@ -56,4 +57,4 @@ function generateInvoice() {
     })
 };
 
-module.exports = { generateInvoice };
+module.exports = { client, generateInvoice };
