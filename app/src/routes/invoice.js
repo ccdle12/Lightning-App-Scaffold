@@ -14,19 +14,19 @@ router.post("/", async (_, res) => {
   let invoiceAmt = {value: 100}
 
   lnClient.AddInvoice(invoiceAmt, (err, invoiceRes) => {  
-  // Check for returned err.
-  if (err) {
-    res.render('invoice', {invoice: "There was an error: " + err});
+    // Check for returned err.
+    if (err) {
+      res.render('invoice', {invoice: "There was an error: " + err});
       return;
-  };
+    };
 
-  // Parse the invoice as JSON and retrieve the payment_request.
-  let invoiceObj = utils.objToJSON(invoiceRes);
-  let payReq = invoiceObj["payment_request"];
+    // Parse the invoice as JSON and retrieve the payment_request.
+    let invoiceObj = utils.objToJSON(invoiceRes);
+    let payReq = invoiceObj["payment_request"];
 
-  // Render invoice.html passing the payment request.
-  res.render('invoice', {invoice: payReq});
-  return;
+    // Render invoice.html passing the payment request.
+    res.render('invoice', {invoice: payReq});
+    return;
   });
 
 });
