@@ -13,7 +13,7 @@ macaroon = m.toString('hex');
 metadata = new grpc.Metadata();
 metadata.add('macaroon', macaroon);
 
-// Create grpc credential from macaroo.n
+// Create grpc credential from macaroon.
 macaroonCreds = grpc.credentials.createFromMetadataGenerator((_args, callback) => {
   callback(null, metadata);
 });
@@ -28,33 +28,8 @@ sslCreds = grpc.credentials.createSsl(lndCert);
 credentials = grpc.credentials.combineChannelCredentials(sslCreds, macaroonCreds);
 
 // Create a gRPC client (address, credentials).
-// lnrpcDescriptor = grpc.load("/app/src/grpc/rpc.proto");
 lnrpcDescriptor = grpc.load("/app/src/grpc/rpc.proto");
 lnrpc = lnrpcDescriptor.lnrpc;
 client = new lnrpc.Lightning(process.env.LND_NODE_IP + ":" + process.env.LND_NODE_PORT, credentials);
 
-
-/**
- * generateInvoice will allow the end user to make a RPC to generate an invoice.
- */
-function generateInvoice() {
-    // Create the invoice details.
-    invoice = {value: 1000}
-
-    // Return a promise for the invoice retrieved.
-    return new Promise((resolve, _) => {
-      client.AddInvoice(invoice, (err, res) => {  
-        // Check for returned err.
-        if (err) {
-          console.log(err);
-          resolve({result: null, err: err})
-          return
-        }
-
-        // Resolve invoice response.
-        resolve({result: res, err: null})
-      })
-    })
-};
-
-module.exports = { client, generateInvoice };
+module.exports = { client };
