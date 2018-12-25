@@ -30,6 +30,6 @@ credentials = grpc.credentials.combineChannelCredentials(sslCreds, macaroonCreds
 // Create a gRPC client (address, credentials).
 lnrpcDescriptor = grpc.load("/app/src/grpc/rpc.proto");
 lnrpc = lnrpcDescriptor.lnrpc;
-client = new lnrpc.Lightning(process.env.LND_NODE_IP + ":" + process.env.LND_NODE_PORT, credentials);
+Client = new lnrpc.Lightning(process.env.LND_NODE_IP + ":" + process.env.LND_NODE_PORT, credentials);
 
-module.exports = { client };
+module.exports = { Client };
