@@ -12,3 +12,6 @@ rm -rf /simnet/alice/data
 rm -rf /simnet/bob/tls.cert
 rm -rf /simnet/bob/tls.key
 rm -rf /simnet/bob/data
+
+# Remove all blocks in BTCD.
+cd /root/.btcd && rm -rf data
