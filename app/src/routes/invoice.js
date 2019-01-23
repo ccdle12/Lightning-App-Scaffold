@@ -22,12 +22,12 @@ router.post("/", async (_, res) => {
       let invoiceObj = utils.objToJSON(invoiceRes);
       let boltInvoice = invoiceObj["payment_request"];
 
-       // Generate a QR Code for the payment request.
-       let code = await QRCode.toDataURL(boltInvoice);
+      // Generate a QR Code for the payment request.
+      let code = await QRCode.toDataURL(boltInvoice);
 
-       // Assign the generated values.
-       invoice = boltInvoice;
-       qrcode = code;
+      // Assign the generated values.
+      invoice = boltInvoice;
+      qrcode = code;
 
     } catch (err) {
        // Assign the errors.
